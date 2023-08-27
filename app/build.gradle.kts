@@ -79,4 +79,7 @@ dependencies {
 
     //OkHTTP
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
+
+    //Rounded Image View
+    implementation("com.makeramen:roundedimageview:2.3.0")
 }

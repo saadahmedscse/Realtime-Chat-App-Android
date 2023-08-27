@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/static_white"
+    android:orientation="vertical"
+    android:padding="@dimen/_20sdp"
+    tools:context=".view.auth.createAccount.CreateAccountDetailsFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/regular"
+        android:text="Welcome to"
+        android:textColor="@color/static_main"
+        android:textSize="@dimen/_20ssp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bold"
+        android:text="@string/app_name"
+        android:textColor="@color/static_main"
+        android:textSize="@dimen/_30ssp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/regular"
+        android:text="Enter the following details\nand get connected..."
+        android:textColor="@color/static_grey"
+        android:textSize="@dimen/_12ssp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="@dimen/_78sdp"
+            android:layout_height="@dimen/_70sdp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                app:riv_corner_radius="@dimen/_15sdp"
+                android:background="@drawable/bg_light_grey_15"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_camera"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/static_white"/>
+
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_7sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:hint="Name"
+            android:inputType="text"
+            android:fontFamily="@font/medium"
+            android:textColor="@color/colorDarkGrey"
+            android:background="@drawable/bg_bottom_line"
+            android:textSize="@dimen/_25ssp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:paddingBottom="@dimen/_7sdp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:fontFamily="@font/regular"
+            android:textColor="@color/colorDarkGrey"
+            android:background="@drawable/bg_bottom_line"
+            android:textSize="@dimen/_15ssp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/medium"
+            android:text="Gender"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="@dimen/_12ssp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_5sdp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:padding="@dimen/_4sdp"
+                    android:background="@drawable/ripple_circle_main"
+                    android:src="@drawable/ic_male"
+                    app:tint="@color/static_white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/medium"
+                    android:text="Male"
+                    android:textColor="@color/static_main"
+                    android:textSize="@dimen/_12ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:padding="@dimen/_4sdp"
+                    android:background="@drawable/ripple_circle_light_grey"
+                    android:src="@drawable/ic_female"
+                    app:tint="@color/static_white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/medium"
+                    android:text="Female"
+                    android:textColor="@color/colorLightGrey"
+                    android:textSize="@dimen/_12ssp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:paddingHorizontal="@dimen/_25sdp"
+            android:background="@drawable/ripple_bg_main_15"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true">
+
+            <TextView
+                android:id="@+id/tv_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium"
+                android:layout_centerInParent="true"
+                android:text="Next"
+                android:textColor="@color/static_white"
+                android:textSize="@dimen/_12ssp" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:visibility="gone"
+                android:indeterminateTint="@color/static_white"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
