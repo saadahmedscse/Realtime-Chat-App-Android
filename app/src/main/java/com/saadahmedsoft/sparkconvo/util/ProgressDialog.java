@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.saadahmedsoft.popupdialog.PopupDialog;
 import com.saadahmedsoft.popupdialog.Styles;
+import com.saadahmedsoft.sparkconvo.R;
 
 public class ProgressDialog {
 
@@ -18,7 +19,8 @@ public class ProgressDialog {
     }
 
     public void show() {
-        popupDialog.setStyle(Styles.PROGRESS)
+        popupDialog.setStyle(Styles.LOTTIE_ANIMATION)
+                .setLottieRawRes(R.raw.loading)
                 .showDialog();
     }
 

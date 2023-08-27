@@ -13,7 +13,13 @@
         android:theme="@style/Theme.SparkConvo"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.dashboard.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.auth.AuthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
