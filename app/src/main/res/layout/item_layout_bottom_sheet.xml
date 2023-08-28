@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_25sdp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_bottom_sheet">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        app:lottie_autoPlay="true"
+        app:lottie_repeatCount="10000"
+        app:lottie_rawRes="@raw/loading"/>
+
+    <TextView
+        android:id="@+id/tv_progress_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:textColor="@color/static_main"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginStart="@dimen/_15sdp"/>
+
+</LinearLayout>

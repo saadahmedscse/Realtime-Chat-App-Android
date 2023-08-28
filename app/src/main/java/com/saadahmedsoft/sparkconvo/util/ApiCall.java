@@ -33,9 +33,9 @@ public class ApiCall {
      * @param <T> is List of Items
      */
 
-    public static <T> void enqueue(Context context, Call<T> call, OnResponseGet<T> listener) {
+    public static <T> void enqueue(Context context, Call<T> call, String progressMessage, OnResponseGet<T> listener) {
         ProgressDialog progressDialog = ProgressDialog.getInstance(context);
-        progressDialog.show();
+        progressDialog.show(progressMessage);
         call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {

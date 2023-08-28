@@ -101,8 +101,8 @@ abstract class BaseActivity<BINDING: ViewBinding>(
         toast(this, message, duration)
     }
 
-    fun <T> Call<T>.getResponse(listener: ApiCall.OnResponseGet<T>) {
-        ApiCall.enqueue(this@BaseActivity, this) {
+    fun <T> Call<T>.getResponse(progressMessage: String, listener: ApiCall.OnResponseGet<T>) {
+        ApiCall.enqueue(this@BaseActivity, this, progressMessage) {
             listener.onSuccessful(it)
         }
     }
