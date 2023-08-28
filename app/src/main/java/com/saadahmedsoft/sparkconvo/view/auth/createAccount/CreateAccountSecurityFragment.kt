@@ -1,5 +1,6 @@
 package com.saadahmedsoft.sparkconvo.view.auth.createAccount
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.gson.JsonObject
 import com.saadahmedsoft.sparkconvo.base.BaseFragment
@@ -13,6 +14,7 @@ import com.saadahmedsoft.sparkconvo.helper.onClicked
 import com.saadahmedsoft.sparkconvo.helper.visible
 import com.saadahmedsoft.sparkconvo.service.dto.auth.CreateAccountRequest
 import com.saadahmedsoft.sparkconvo.util.MultiPartUtil
+import com.saadahmedsoft.sparkconvo.view.dashboard.DashboardActivity
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -50,7 +52,25 @@ class CreateAccountSecurityFragment : BaseFragment<FragmentCreateAccountSecurity
                         map["confirmPassword"] = binding.etConfirmPassword.createBody()
 
                         apiService.createAccount(map, photoPart).getResponse("Creating your account, please wait.") {
-                            it.message.shortSnackBar()
+                            it.status?.let { createAccountStatus ->
+                                if (createAccountStatus) {
+                                    val body = JsonObject()
+                                    body.addProperty("email", createAccountRequest.email)
+                                    body.addProperty("password", binding.etPassword.getString())
+
+                                    apiService.login(body).getResponse("Trying to login, please wait.") { loginResponse ->
+                                        loginResponse.status?.let { loginStatus ->
+                                            if (loginStatus) {
+                                                session.setBearerToken(loginResponse.token!!)
+
+                                                val intent = Intent(requireContext(), DashboardActivity::class.java)
+                                                requireActivity().startActivity(intent)
+                                                requireActivity().finish()
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
 
