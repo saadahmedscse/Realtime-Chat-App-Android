@@ -10,11 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
+import com.saadahmedsoft.sparkconvo.api.RetroInstance
 import com.saadahmedsoft.sparkconvo.helper.navigate
 import com.saadahmedsoft.sparkconvo.helper.snackBar
 import com.saadahmedsoft.sparkconvo.helper.toast
 import com.saadahmedsoft.sparkconvo.util.ApiCall
 import com.saadahmedsoft.sparkconvo.util.SessionManager
+import com.saadahmedsoft.sparkconvo.viewmodel.AuthViewModel
 import com.saadahmedsoft.sparkconvo.viewmodel.ToolbarViewModel
 import com.saadahmedsoft.tinydb.TinyDB
 import retrofit2.Call
@@ -27,6 +29,8 @@ abstract class BaseFragment<BINDING: ViewBinding>(
     private lateinit var _session: SessionManager
     private lateinit var _tinyDb: TinyDB
     private val toolbarViewModel by activityViewModels<ToolbarViewModel>()
+    val authViewModel by activityViewModels<AuthViewModel>()
+    val apiService = RetroInstance.retrofitInstance
 
      val binding: BINDING
         get() = _binding

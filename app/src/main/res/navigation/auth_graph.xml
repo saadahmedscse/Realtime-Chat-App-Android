@@ -9,5 +9,14 @@
         android:id="@+id/createAccountFragment"
         android:name="com.saadahmedsoft.sparkconvo.view.auth.createAccount.CreateAccountDetailsFragment"
         android:label="fragment_create_account"
-        tools:layout="@layout/fragment_create_account_details" />
+        tools:layout="@layout/fragment_create_account_details" >
+        <action
+            android:id="@+id/create_account_details_to_create_account_security"
+            app:destination="@id/createAccountSecurityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAccountSecurityFragment"
+        android:name="com.saadahmedsoft.sparkconvo.view.auth.createAccount.CreateAccountSecurityFragment"
+        android:label="fragment_create_account_security"
+        tools:layout="@layout/fragment_create_account_security" />
 </navigation>

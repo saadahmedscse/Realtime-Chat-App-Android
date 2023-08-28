@@ -23,13 +23,13 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.OpenableColumns;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
@@ -71,7 +71,7 @@ public class MultiPartUtil {
      * @throws IOException for invalid URI
      */
 
-    public MultipartBody.Part getPartFromUri(@Nullable Uri uri, String formDataKey) throws IOException {
+    public MultipartBody.Part getPartFromUri(@NonNull Uri uri, String formDataKey) throws IOException {
         Cursor cursor = contentResolver().query(uri, null, null, null, null);
         String fileName = "";
 
@@ -86,11 +86,11 @@ public class MultiPartUtil {
             if (cursor != null) cursor.close();
         }
 
-        String mimeType = contentResolver().getType(uri);
         InputStream inputStream = contentResolver().openInputStream(uri);
+        assert inputStream != null;
         byte[] fileBytes = getBytes(inputStream);
 
-        RequestBody requestFile = RequestBody.create(MediaType.parse(mimeType), fileBytes);
+        RequestBody requestFile = RequestBody.create(fileBytes);
         return MultipartBody.Part.createFormData(formDataKey, fileName, requestFile);
     }
 

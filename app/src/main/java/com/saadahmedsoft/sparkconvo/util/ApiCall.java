@@ -36,14 +36,14 @@ public class ApiCall {
     public static <T> void enqueue(Context context, Call<T> call, OnResponseGet<T> listener) {
         ProgressDialog progressDialog = ProgressDialog.getInstance(context);
         progressDialog.show();
-        call.enqueue(new Callback<T>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
                 progressDialog.dismiss();
                 if (response.body() != null) {
                     listener.onSuccessful(response.body());
                 } else {
-                    Toast.makeText(context, "An error occurred, try again later", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, ConstructErrorBody.getMessage(response.errorBody()), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -56,13 +56,13 @@ public class ApiCall {
     }
 
     public static <T> void enqueueNoProgress(Context context, Call<T> call, OnResponseGet<T> listener) {
-        call.enqueue(new Callback<T>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
                 if (response.body() != null) {
                     listener.onSuccessful(response.body());
                 } else {
-                    Toast.makeText(context, "An error occurred, try again later", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, ConstructErrorBody.getMessage(response.errorBody()), Toast.LENGTH_SHORT).show();
                 }
             }
 
