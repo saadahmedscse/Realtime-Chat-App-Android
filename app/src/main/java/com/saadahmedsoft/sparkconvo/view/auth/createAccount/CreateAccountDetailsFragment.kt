@@ -41,6 +41,10 @@ class CreateAccountDetailsFragment : BaseFragment<FragmentCreateAccountDetailsBi
     private var gender = "Male"
 
     override fun onFragmentCreate(savedInstanceState: Bundle?) {
+        binding.btnLogin.onClicked {
+            onBackPressed()
+        }
+
         binding.layoutChooseImage.onClicked {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 openImagePicker()
