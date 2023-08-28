@@ -1,9 +1,12 @@
 package com.saadahmedsoft.sparkconvo.api
 
+import com.google.gson.JsonObject
+import com.saadahmedsoft.sparkconvo.service.dto.auth.LoginResponse
 import com.saadahmedsoft.sparkconvo.service.dto.common.CommonResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -20,4 +23,7 @@ interface ApiService {
         @PartMap userRequest: Map<String, RequestBody>,
         @Part photo: MultipartBody.Part?
     ): Call<CommonResponse>
+
+    @POST("login")
+    fun login(@Body body: JsonObject): Call<LoginResponse>
 }
