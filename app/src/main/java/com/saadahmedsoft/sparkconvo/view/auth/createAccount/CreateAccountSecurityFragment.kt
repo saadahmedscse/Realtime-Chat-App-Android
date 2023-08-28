@@ -19,10 +19,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 class CreateAccountSecurityFragment : BaseFragment<FragmentCreateAccountSecurityBinding>(FragmentCreateAccountSecurityBinding::inflate) {
-    override val title: String
-        get() = ""
-    override val isBackButtonVisible: Boolean
-        get() = false
 
     private lateinit var createAccountRequest: CreateAccountRequest
     private var photoPart: MultipartBody.Part? = null

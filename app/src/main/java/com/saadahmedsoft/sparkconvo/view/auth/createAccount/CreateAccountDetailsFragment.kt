@@ -24,13 +24,7 @@ import com.saadahmedsoft.sparkconvo.helper.visible
 import com.saadahmedsoft.sparkconvo.service.dto.auth.CreateAccountRequest
 import java.util.regex.Pattern
 
-
 class CreateAccountDetailsFragment : BaseFragment<FragmentCreateAccountDetailsBinding>(FragmentCreateAccountDetailsBinding::inflate) {
-
-    override val title: String
-        get() = ""
-    override val isBackButtonVisible: Boolean
-        get() = false
 
     private lateinit var imagePickerLauncher: ActivityResultLauncher<Intent>
     private var uri: Uri? = null

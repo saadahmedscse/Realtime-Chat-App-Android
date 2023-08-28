@@ -16,11 +16,6 @@ import java.util.regex.Pattern
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
-    override val title: String
-        get() = ""
-    override val isBackButtonVisible: Boolean
-        get() = false
-
     companion object {
         private const val EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
     }

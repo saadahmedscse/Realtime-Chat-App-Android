@@ -17,7 +17,6 @@ import com.saadahmedsoft.sparkconvo.helper.toast
 import com.saadahmedsoft.sparkconvo.util.ApiCall
 import com.saadahmedsoft.sparkconvo.util.SessionManager
 import com.saadahmedsoft.sparkconvo.viewmodel.AuthViewModel
-import com.saadahmedsoft.sparkconvo.viewmodel.ToolbarViewModel
 import com.saadahmedsoft.tinydb.TinyDB
 import retrofit2.Call
 
@@ -28,7 +27,6 @@ abstract class BaseFragment<BINDING: ViewBinding>(
     private lateinit var _binding: BINDING
     private lateinit var _session: SessionManager
     private lateinit var _tinyDb: TinyDB
-    private val toolbarViewModel by activityViewModels<ToolbarViewModel>()
     val authViewModel by activityViewModels<AuthViewModel>()
     val apiService = RetroInstance.retrofitInstance
 
@@ -40,9 +38,6 @@ abstract class BaseFragment<BINDING: ViewBinding>(
 
     val tinyDb: TinyDB
         get() = _tinyDb
-
-    abstract val title: String
-    abstract val isBackButtonVisible: Boolean
 
     abstract fun onFragmentCreate(savedInstanceState: Bundle?)
     abstract fun observeData()
@@ -61,8 +56,6 @@ abstract class BaseFragment<BINDING: ViewBinding>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        toolbarViewModel.setTitle(title)
-        toolbarViewModel.setBackButtonState(isBackButtonVisible)
         return _binding.root
     }
 
