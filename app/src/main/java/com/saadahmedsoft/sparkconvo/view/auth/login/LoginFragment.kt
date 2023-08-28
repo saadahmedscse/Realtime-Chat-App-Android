@@ -11,8 +11,6 @@ import com.saadahmedsoft.sparkconvo.helper.getString
 import com.saadahmedsoft.sparkconvo.helper.gone
 import com.saadahmedsoft.sparkconvo.helper.onClicked
 import com.saadahmedsoft.sparkconvo.helper.visible
-import com.saadahmedsoft.sparkconvo.service.dto.auth.CreateAccountRequest
-import com.saadahmedsoft.sparkconvo.view.auth.createAccount.CreateAccountDetailsFragment
 import com.saadahmedsoft.sparkconvo.view.dashboard.DashboardActivity
 import java.util.regex.Pattern
 
