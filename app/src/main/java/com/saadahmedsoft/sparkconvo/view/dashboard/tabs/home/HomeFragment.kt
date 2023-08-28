@@ -1,60 +1,55 @@
 package com.saadahmedsoft.sparkconvo.view.dashboard.tabs.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.saadahmedsoft.sparkconvo.R
+import com.saadahmedsoft.sparkconvo.base.BaseFragment
+import com.saadahmedsoft.sparkconvo.base.BaseRecyclerAdapter
+import com.saadahmedsoft.sparkconvo.databinding.FragmentHomeBinding
+import com.saadahmedsoft.sparkconvo.databinding.ItemLayoutFirendsBinding
+import com.saadahmedsoft.sparkconvo.helper.setHorizontalLayoutManager
+import com.saadahmedsoft.sparkconvo.helper.visible
+import com.saadahmedsoft.sparkconvo.service.dto.user.ProfileResponse
+import com.squareup.picasso.Picasso
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private val friendsAdapter by lazy {
+        FriendsAdapter()
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    @SuppressLint("SetTextI18n")
+    override fun onFragmentCreate(savedInstanceState: Bundle?) {
+        binding.recyclerViewFriends.setHorizontalLayoutManager(requireContext())
+        binding.recyclerViewFriends.adapter = friendsAdapter
+
+        apiService.getProfile(session.bearerToken!!).getResponse("Getting user info, please wait.") {
+            binding.tvName.text = "Hello ${it.name?.split(" ")?.get(0)},"
+            Picasso.get().load("http://192.168.0.114/${it.photo}").into(binding.profilePicture)
         }
+
+        apiService.getFriends(session.bearerToken!!).getNoProgressResponse {
+            friendsAdapter.addItems(it)
+        }
+
+        binding.layoutNoData.root.visible()
+        binding.layoutNoData.tvNoData.text = "Oops! You have no conversations opened yet"
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+    override fun observeData() {}
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private class FriendsAdapter : BaseRecyclerAdapter<ProfileResponse, ItemLayoutFirendsBinding>() {
+
+        override val layoutRes: Int
+            get() = R.layout.item_layout_firends
+
+        override fun onBind(
+            binding: ItemLayoutFirendsBinding,
+            item: ProfileResponse,
+            position: Int
+        ) {
+            Picasso.get().load("http://192.168.0.114/${item.photo}").into(binding.profilePicture)
+            binding.tvName.text = item.name?.split(" ")?.get(0)
+        }
     }
 }

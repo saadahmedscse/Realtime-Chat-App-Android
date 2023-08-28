@@ -1,12 +1,14 @@
 package com.saadahmedsoft.sparkconvo.view.dashboard
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.saadahmedsoft.sparkconvo.R
+import com.saadahmedsoft.sparkconvo.base.BaseActivity
+import com.saadahmedsoft.sparkconvo.databinding.ActivityDashboardBinding
 
-class DashboardActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
+class DashboardActivity : BaseActivity<ActivityDashboardBinding>(ActivityDashboardBinding::inflate) {
+
+    override fun onActivityCreate(savedInstanceState: Bundle?) {
+        //
     }
+
+    override fun observeData() {}
 }
