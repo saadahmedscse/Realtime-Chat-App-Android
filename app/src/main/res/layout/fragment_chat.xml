@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_chat_background"
+    tools:context=".view.dashboard.tabs.chat.ChatFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/static_white">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:background="@drawable/ripple_circle_white"
+                android:elevation="@dimen/_3sdp"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_back"
+                app:tint="@color/colorDarkGrey" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profile_picture"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@id/btn_back"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="@dimen/_10sdp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_toEndOf="@id/profile_picture"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/medium"
+                    android:maxWidth="@dimen/_100sdp"
+                    android:maxLines="1"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/regular"
+                    android:text="Online"
+                    android:textColor="@color/static_main"
+                    android:textSize="@dimen/_10ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_17sdp"
+                    android:layout_height="@dimen/_17sdp"
+                    android:src="@drawable/ic_call"
+                    app:tint="@color/colorDarkGrey" />
+
+                <ImageView
+                    android:layout_width="@dimen/_17sdp"
+                    android:layout_height="@dimen/_17sdp"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:src="@drawable/ic_video_call"
+                    app:tint="@color/colorDarkGrey" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/_90sdp"
+            android:clipToPadding="false"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_20sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/btn_send"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/bg_white_25"
+            android:paddingHorizontal="@dimen/_20sdp">
+
+            <ImageView
+                android:id="@+id/btn_attachment"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:src="@drawable/ic_attachment"
+                app:tint="@color/colorDarkGrey" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@id/btn_attachment"
+                android:background="@color/static_white"
+                android:fontFamily="@font/regular"
+                android:hint="Type message..."
+                android:inputType="textMultiLine"
+                android:minHeight="@dimen/_50sdp"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="@dimen/_12ssp" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/btn_send"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_send"
+            app:tint="@color/static_white"
+            android:padding="@dimen/_15sdp"
+            android:background="@drawable/ripple_circle_main"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

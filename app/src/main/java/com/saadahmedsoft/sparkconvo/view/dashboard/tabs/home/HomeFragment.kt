@@ -7,16 +7,20 @@ import com.saadahmedsoft.sparkconvo.base.BaseFragment
 import com.saadahmedsoft.sparkconvo.base.BaseRecyclerAdapter
 import com.saadahmedsoft.sparkconvo.databinding.FragmentHomeBinding
 import com.saadahmedsoft.sparkconvo.databinding.ItemLayoutFirendsBinding
+import com.saadahmedsoft.sparkconvo.helper.onClicked
 import com.saadahmedsoft.sparkconvo.helper.setHorizontalLayoutManager
 import com.saadahmedsoft.sparkconvo.helper.visible
+import com.saadahmedsoft.sparkconvo.interfaces.OnFriendLayoutClicked
 import com.saadahmedsoft.sparkconvo.service.dto.user.ProfileResponse
 import com.squareup.picasso.Picasso
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate), OnFriendLayoutClicked {
 
     private val friendsAdapter by lazy {
-        FriendsAdapter()
+        FriendsAdapter(this)
     }
+
+    private var email = ""
 
     @SuppressLint("SetTextI18n")
     override fun onFragmentCreate(savedInstanceState: Bundle?) {
@@ -26,6 +30,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         apiService.getProfile(session.bearerToken!!).getResponse("Getting user info, please wait.") {
             binding.tvName.text = "Hello ${it.name?.split(" ")?.get(0)},"
             Picasso.get().load("http://192.168.0.114/${it.photo}").into(binding.profilePicture)
+            email = it.email!!
         }
 
         apiService.getFriends(session.bearerToken!!).getNoProgressResponse {
@@ -38,7 +43,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun observeData() {}
 
-    private class FriendsAdapter : BaseRecyclerAdapter<ProfileResponse, ItemLayoutFirendsBinding>() {
+    private class FriendsAdapter(private val listener: OnFriendLayoutClicked) : BaseRecyclerAdapter<ProfileResponse, ItemLayoutFirendsBinding>() {
 
         override val layoutRes: Int
             get() = R.layout.item_layout_firends
@@ -50,6 +55,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         ) {
             Picasso.get().load("http://192.168.0.114/${item.photo}").into(binding.profilePicture)
             binding.tvName.text = item.name?.split(" ")?.get(0)
+
+            binding.root.onClicked {
+                listener.onFriendClicked(item)
+            }
         }
+    }
+
+    override fun onFriendClicked(item: ProfileResponse) {
+        tinyDb.putString("p1Email", email)
+            .putString("p2Email", item.email)
+            .putObject("friend_profile", item)
+            .apply()
+
+        navigate(R.id.home_to_chat)
     }
 }

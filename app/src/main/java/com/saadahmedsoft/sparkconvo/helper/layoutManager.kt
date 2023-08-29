@@ -11,6 +11,10 @@ fun RecyclerView.setLinearLayoutManager(context: Context) {
     this.layoutManager = linearLayoutManager(context)
 }
 
+fun RecyclerView.setReverseLayoutManager(context: Context) {
+    this.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
+}
+
 fun RecyclerView.setStaggeredGridLayoutManager(gridCount: Int) {
     this.layoutManager = staggeredGridLayoutManager(gridCount)
 }

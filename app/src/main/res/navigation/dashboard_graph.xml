@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.saadahmedsoft.sparkconvo.view.dashboard.tabs.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/home_to_chat"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.saadahmedsoft.sparkconvo.view.dashboard.tabs.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>
