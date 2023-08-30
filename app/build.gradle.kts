@@ -82,4 +82,7 @@ dependencies {
 
     //Rounded Image View
     implementation("com.makeramen:roundedimageview:2.3.0")
+
+    //WebSocket
+    implementation("org.java-websocket:Java-WebSocket:1.5.1")
 }
