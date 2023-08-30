@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.saadahmedsoft.sparkconvo.R
-import com.saadahmedsoft.sparkconvo.helper.log
 import com.saadahmedsoft.sparkconvo.service.dto.conversation.Chats
 import java.text.SimpleDateFormat
+import java.util.LinkedList
 import java.util.Locale
 
 class ChatAdapter(private val receiverId: Long) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -21,17 +21,17 @@ class ChatAdapter(private val receiverId: Long) : RecyclerView.Adapter<RecyclerV
 
     private val simpleDateFormat = SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
     private val formatter = SimpleDateFormat("h:mm a", Locale.getDefault())
-    private var items = mutableListOf<Chats>()
+    private var items = LinkedList<Chats>()
 
     @SuppressLint("NotifyDataSetChanged")
     fun addItems(items: List<Chats>) {
-        this.items = items as MutableList<Chats>
+        this.items = items as LinkedList<Chats>
         notifyDataSetChanged()
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun addItem(item: Chats) {
-        this.items.add(item)
+        this.items.addFirst(item)
         notifyDataSetChanged()
     }
 
@@ -86,11 +86,11 @@ class ChatAdapter(private val receiverId: Long) : RecyclerView.Adapter<RecyclerV
 
     private class LeftViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvMessage: TextView = itemView.findViewById(R.id.tv_message)
-        val time = itemView.findViewById<TextView>(R.id.tv_time)
+        val time: TextView = itemView.findViewById(R.id.tv_time)
     }
 
     private class RightViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvMessage: TextView = itemView.findViewById(R.id.tv_message)
-        val time = itemView.findViewById<TextView>(R.id.tv_time)
+        val time: TextView = itemView.findViewById(R.id.tv_time)
     }
 }
