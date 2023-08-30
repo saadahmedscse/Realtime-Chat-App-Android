@@ -4,6 +4,7 @@ import com.google.gson.JsonObject
 import com.saadahmedsoft.sparkconvo.service.dto.auth.LoginResponse
 import com.saadahmedsoft.sparkconvo.service.dto.common.CommonResponse
 import com.saadahmedsoft.sparkconvo.service.dto.conversation.ConversationResponse
+import com.saadahmedsoft.sparkconvo.service.dto.conversation.HomeConversationResponse
 import com.saadahmedsoft.sparkconvo.service.dto.user.ProfileResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -42,4 +43,7 @@ interface ApiService {
 
     @POST("conversation/single")
     fun getSingleConversationByEmails(@Header("Authorization") token: String, @Body body: JsonObject): Call<ConversationResponse>
+
+    @GET("conversation")
+    fun getConversations(@Header("Authorization") token: String): Call<List<HomeConversationResponse>>
 }
