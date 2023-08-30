@@ -8,6 +8,7 @@ import com.saadahmedsoft.sparkconvo.base.BaseRecyclerAdapter
 import com.saadahmedsoft.sparkconvo.databinding.FragmentHomeBinding
 import com.saadahmedsoft.sparkconvo.databinding.ItemLayoutConversationBinding
 import com.saadahmedsoft.sparkconvo.databinding.ItemLayoutFirendsBinding
+import com.saadahmedsoft.sparkconvo.helper.gone
 import com.saadahmedsoft.sparkconvo.helper.onClicked
 import com.saadahmedsoft.sparkconvo.helper.setHorizontalLayoutManager
 import com.saadahmedsoft.sparkconvo.helper.setLinearLayoutManager
@@ -58,7 +59,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             if (conv.isEmpty()) {
                 binding.layoutNoData.root.visible()
                 binding.layoutNoData.tvNoData.text = "Oops! You have no conversations opened yet"
-            } else conversationAdapter.addItems(conv)
+            } else {
+                conversationAdapter.addItems(conv)
+                binding.layoutNoData.root.gone()
+            }
         }
     }
 
