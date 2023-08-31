@@ -11,15 +11,15 @@ cutting-edge chat app.
 
 ```json
 {
-  "Min SDK": "24 Nougat"
-  "Max SDK": "33 Tiramisu"
-  "Primary Language": "Kotlin"
-  "Partially Used": "Java"
-  "HTTP": "Retrofit"
-  "Pattern": "MVVM"
-  "TCP": "WebSocket"
-  "Backend": "Spring Boot"
-  "Backend Project": "https://github.com/saadahmedscse/Realtime-Chat-App-Spring-Boot-WebSocket"
+  "Min SDK"           : "24 Nougat"
+  "Max SDK"           : "33 Tiramisu"
+  "Primary Language"  : "Kotlin"
+  "Partially Used"    : "Java"
+  "HTTP"              : "Retrofit"
+  "Pattern"           : "MVVM"
+  "TCP"               : "WebSocket"
+  "Backend"           : "Spring Boot"
+  "Backend Project"   : "https://github.com/saadahmedscse/Realtime-Chat-App-Spring-Boot-WebSocket"
 }
 ```
 
